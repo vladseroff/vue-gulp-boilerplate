@@ -1,0 +1,8 @@
+stages:
+  - deploy
+job1:
+  stage: deploy
+  script:
+     - /home/deploy_scripts/just_copy.sh
+  only:
+    - master

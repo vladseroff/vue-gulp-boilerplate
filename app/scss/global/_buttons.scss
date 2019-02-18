@@ -1,0 +1,21 @@
+.button {
+	background: $red;
+	padding: 0 30px;
+	height: 50px;
+	color: #fff;
+	font-size: 1rem;
+	text-transform: uppercase;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	&:hover {
+		opacity: .9;
+	}
+	&:active {
+		opacity: .8;
+	}
+}

@@ -1,0 +1,65 @@
+html,
+body {
+	width: 100%;
+	display: flex;
+	flex: 1 1 auto;
+}
+
+html {
+	min-height: 100%;
+	font-size: 16px;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+	color: #fff;
+	background: #000;
+}
+
+input,
+textarea {
+    @include placeholder {
+		color: $grey;
+    }
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.site-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	overflow: hidden;
+	width: 100%;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+}
+
+nav {
+	flex: none;
+}
+
+main {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.content {
+	$padding: 15px;
+	max-width: 1374px + ($padding * 2);
+	width: 100%;
+	padding: 0 $padding;
+	margin: 0 auto;
+}
