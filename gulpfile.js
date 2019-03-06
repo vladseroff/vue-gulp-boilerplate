@@ -99,7 +99,7 @@ gulp.task('scripts', function() {
 
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "http://landing.weeek.gc/",
+        proxy: "http://example.ru/",
         open: true,
         notify: false
     });
