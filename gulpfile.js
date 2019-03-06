@@ -16,34 +16,34 @@ var gulp = require('gulp'),
     replace = require('gulp-replace');
 
 gulp.task('spriteClean', function() {
-    return del.sync('app/assets/images/sprite.png', {
+    return del.sync('app/static/images/sprite.png', {
         force: true,
     });
 });
 
 gulp.task('removeSvg', function() {
-    return del.sync('app/assets/images/icons/sprite.svg', {
+    return del.sync('app/static/images/icons/sprite.svg', {
         force: true,
     });
 });
 
 gulp.task('sprite', ['spriteClean'], function() {
-    var spriteData = gulp.src('app/assets/images/*.png').pipe(spritesmith({
-        imgName: 'assets/images/sprite.png',
-        imgPath: 'assets/images/sprite.png?v=' + Math.floor((new Date()).getTime() / 1000),
+    var spriteData = gulp.src('app/static/images/*.png').pipe(spritesmith({
+        imgName: 'static/images/sprite.png',
+        imgPath: 'static/images/sprite.png?v=' + Math.floor((new Date()).getTime() / 1000),
         cssName: '_sprite.scss',
         algorithm: 'binary-tree'
     }));
     var imgStream = spriteData.img
         .pipe(buffer())
-        .pipe(gulp.dest('app/assets/images/'));
+        .pipe(gulp.dest('app/static/images/'));
     var cssStream = spriteData.css
         .pipe(gulp.dest('app/scss/'));
     return merge(imgStream, cssStream);
 });
 
 gulp.task('svgSprite', ['removeSvg'], function() {
-    return gulp.src('app/assets/icons/*.svg')
+    return gulp.src('app/static/icons/*.svg')
     .pipe(svgmin({
         js2svg: {
             pretty: true
@@ -67,7 +67,7 @@ gulp.task('svgSprite', ['removeSvg'], function() {
             }
         }
     }))
-    .pipe(gulp.dest('app/assets/icons'));
+    .pipe(gulp.dest('app/static/'));
 });
 
 gulp.task('sass', function() {
@@ -99,7 +99,7 @@ gulp.task('scripts', function() {
 
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "http://dampls.gc/",
+        proxy: "http://landing.weeek.gc/",
         open: true,
         notify: false
     });
@@ -108,7 +108,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', ['browser-sync'], function() {
     gulp.watch('app/scss/**/*.scss', ['sass']);
     gulp.watch('app/js/**/*.js', ['scripts']);
-    gulp.watch('app/assets/icons/*.svg', ['svgSprite']);
+    gulp.watch('app/static/icons/*.svg', ['svgSprite']);
     gulp.watch('app/**/*.php', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);
 });

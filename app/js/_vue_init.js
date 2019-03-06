@@ -1,3 +1,3 @@
-// var vm = new Vue({
-//     el: '#app'
-// });
+var vm = new Vue({
+    el: '#app'
+});
