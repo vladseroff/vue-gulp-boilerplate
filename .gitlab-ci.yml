@@ -3,6 +3,6 @@ stages:
 job1:
   stage: deploy
   script:
-     - /home/deploy_scripts/just_copy.sh
+     - /home/gitlab-runner/deploy/just_copy.sh
   only:
     - master
