@@ -99,17 +99,17 @@ gulp.task('scripts', function() {
 
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "http://example.ru/",
-        open: true,
-        notify: false
-    });
+        notify: false,
+        server: 'app'
+        // proxy: "http://example.ru/",
+    })
 });
 
 gulp.task('watch', ['browser-sync'], function() {
     gulp.watch('app/scss/**/*.scss', ['sass']);
     gulp.watch('app/js/**/*.js', ['scripts']);
     gulp.watch('app/static/icons/*.svg', ['svgSprite']);
-    gulp.watch('app/**/*.php', browserSync.reload);
+    gulp.watch('app/**/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);
 });
 
